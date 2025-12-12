@@ -247,3 +247,11 @@ button.secondary:hover {
     input[type="date"] { font-size: 0.9rem; }
     #gestogramaContainer { width: 300px; height: 300px; }
 }
+
+
+/* ========================
+   ANIMACIÓN RUEDA
+   ======================== */
+#gestograma {
+    transition: transform 4s cubic-bezier(0.33, 1, 0.68, 1);
+}
