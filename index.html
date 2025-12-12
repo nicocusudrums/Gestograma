@@ -3,17 +3,30 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>Gestograma. Dr Monteros Alvi</title>
+    <title>Gestograma | Dr Monteros Alvi</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
-    <h1>Gestograma. Dr Monteros Alvi</h1>
+    <!-- ===========================
+         HEADER PRINCIPAL
+         =========================== -->
+    <header>
+        <h1>Gestograma <span style="font-weight:400;">| Dr Monteros Alvi</span></h1>
+    </header>
 
     <main>
-        <!-- FUM y FPP -->
-        <div class="card">
+        <!-- ===========================
+             SECCIÓN FUM Y FPP
+             =========================== -->
+        <section class="card">
+            <div class="section-header">
+                <i class="fa-solid fa-calendar-check" style="color:#42a5f5;margin-right:0.5rem;"></i>
+                <h2>FUM y FPP</h2>
+            </div>
+
             <label for="fum">FUM (FUR)</label>
             <input type="date" id="fum" name="fum" />
 
@@ -23,16 +36,24 @@
             <div class="small-note">
                 Se asume embarazo de 280 días (40 semanas) desde FUM.
             </div>
-        </div>
+        </section>
 
-        <!-- Fecha de consulta y EG -->
-        <div class="card">
+        <!-- ===========================
+             SECCIÓN FECHA Y EG
+             =========================== -->
+        <section class="card">
+            <div class="section-header">
+                <i class="fa-solid fa-clock" style="color:#f48fb1;margin-right:0.5rem;"></i>
+                <h2>Fecha de consulta y Edad Gestacional</h2>
+            </div>
+
             <label for="fechaConsulta">Fecha a evaluar</label>
             <input type="date" id="fechaConsulta" name="fechaConsulta" />
 
             <div class="buttons-row">
-                <button id="btnHoy" type="button">Hoy</button>
-                <button id="btnFpp" class="secondary" type="button">Ir a FPP</button>
+                <button id="btnHoy" type="button"><i class="fa-solid fa-calendar-day"></i> Hoy</button>
+                <button id="btnFpp" class="secondary" type="button"><i class="fa-solid fa-arrow-right"></i> Ir a
+                    FPP</button>
             </div>
 
             <div class="dato">
@@ -43,17 +64,31 @@
             <div class="small-note">
                 La edad gestacional se calcula entre la FUM y la fecha seleccionada.
             </div>
-        </div>
+        </section>
 
-        <!-- Gestograma Ruleta Animada -->
-        <div class="card">
-            <h2>Gestograma Ruleta</h2>
+        <!-- ===========================
+             SECCIÓN GESTOGRAMA
+             =========================== -->
+        <section class="card">
+            <div class="section-header">
+                <i class="fa-solid fa-circle-notch" style="color:#64b5f6;margin-right:0.5rem;"></i>
+                <h2>Gestograma Ruleta</h2>
+            </div>
+
             <div id="gestogramaContainer">
-                <svg id="gestograma" width="300" height="300" viewBox="0 0 300 300"></svg>
+                <svg id="gestograma" width="400" height="400" viewBox="0 0 400 400"></svg>
                 <div class="pointer">▲</div>
             </div>
-        </div>
+        </section>
+
     </main>
+
+    <!-- ===========================
+         FOOTER
+         =========================== -->
+    <footer style="text-align:center; margin-top:2rem; font-size:0.85rem; color:#555;">
+        &copy; 2025 Dr Monteros Alvi | Todos los derechos reservados
+    </footer>
 
     <script src="script.js"></script>
 </body>
