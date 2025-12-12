@@ -1,0 +1,254 @@
+/* ========================
+   IMPORTAR FUENTE
+   ======================== */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap');
+
+/* ========================
+   VARIABLES
+   ======================== */
+:root {
+    --bg: #f0f4f8;
+    --card-bg: #ffffff;
+    --text: #333;
+    --text-muted: #555;
+
+    --primary: #42a5f5;       /* celeste */
+    --primary-hover: #1e88e5;
+
+    --secondary: #f48fb1;     /* rosa */
+    --secondary-hover: #f06292;
+
+    --chip-bg: #e1f5fe;
+    --chip-text: #0277bd;
+
+    --radius: 12px;
+    --shadow: 0 2px 12px rgba(0,0,0,0.15);
+
+    --space: 1rem;
+}
+
+/* ========================
+   ESTILOS GENERALES
+   ======================== */
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    margin: 0;
+    padding: var(--space);
+    background: var(--bg);
+    color: var(--text);
+}
+
+/* ========================
+   TÍTULO PRINCIPAL
+   ======================== */
+h1 {
+    font-family: 'Roboto Slab', serif;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+    background: linear-gradient(135deg, #42a5f5, #f48fb1);
+    padding: 1rem 2rem;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+
+/* Subtítulos dentro de tarjetas */
+.card h2 {
+    font-family: 'Roboto Slab', serif;
+    font-size: 1.3rem;
+    color: #1976d2;
+    margin-bottom: 0.75rem;
+}
+
+/* ========================
+   CARD
+   ======================== */
+.card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    padding: var(--space);
+    margin-bottom: var(--space);
+    box-shadow: var(--shadow);
+    transition: box-shadow 0.3s, transform 0.2s;
+}
+
+.card:hover {
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    transform: translateY(-2px);
+}
+
+/* ========================
+   LABEL E INPUT
+   ======================== */
+label {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+input[type="date"] {
+    width: 100%;
+    padding: 0.65rem;
+    margin-bottom: 0.75rem;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    font-size: 0.95rem;
+    box-sizing: border-box;
+    background: #fafafa;
+    transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+}
+
+input[type="date"]:focus {
+    outline: none;
+    border-color: #64b5f6;
+    background: #fff;
+    box-shadow: 0 0 8px rgba(66, 165, 245, 0.4);
+}
+
+/* ========================
+   TEXTO Y CHIPS
+   ======================== */
+.small-note {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 0.25rem;
+}
+
+.dato {
+    font-size: 0.95rem;
+    margin-top: 0.25rem;
+}
+
+.dato strong {
+    font-weight: 600;
+}
+
+.chip {
+    display: inline-block;
+    margin-top: 0.35rem;
+    padding: 0.35rem 0.85rem;
+    border-radius: 999px;
+    font-size: 0.88rem;
+    background: var(--chip-bg);
+    color: var(--chip-text);
+    font-weight: 600;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+}
+
+/* ========================
+   BOTONES
+   ======================== */
+button {
+    padding: 0.55rem 1.1rem;
+    border-radius: 999px;
+    border: none;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    background: var(--primary);
+    color: #fff;
+    transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+}
+
+button:hover {
+    background: var(--primary-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+button:focus {
+    outline: 2px solid #90caf9;
+    outline-offset: 2px;
+}
+
+button.secondary {
+    background: var(--secondary);
+    color: #fff;
+}
+
+button.secondary:hover {
+    background: var(--secondary-hover);
+}
+
+/* ========================
+   FILA DE BOTONES
+   ======================== */
+.buttons-row {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+/* ========================
+   GESTOGRAMA (RULETA AVANZADA)
+   ======================== */
+#gestogramaContainer {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    margin: 2rem auto;
+    border-radius: 50%;
+    background: radial-gradient(circle, #fefefe 0%, #e1f5fe 85%);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+#gestograma {
+    transform: rotate(-90deg);
+    transition: transform 2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+#gestograma path {
+    stroke: #fff;
+    stroke-width: 1.5;
+    cursor: pointer;
+    transition: fill 0.5s, transform 0.2s;
+}
+
+/* Colores por trimestre (4 secciones, celeste-rosa alternado) */
+.trimestre1 { fill: #42a5f5; }
+.trimestre2 { fill: #f48fb1; }
+.trimestre3 { fill: #64b5f6; }
+.trimestre4 { fill: #f06292; }
+
+/* Puntero */
+.pointer {
+    position: absolute;
+    top: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    color: #e91e63;
+    text-shadow: 0 0 10px #fff;
+    z-index: 10;
+}
+
+/* ========================
+   RESPONSIVE
+   ======================== */
+@media (max-width: 900px) {
+    h1 { font-size: 1.8rem; padding: 1rem 1.5rem; }
+    .card { padding: 0.9rem; }
+    input[type="date"] { font-size: 0.92rem; }
+    button { font-size: 0.85rem; padding: 0.5rem 1rem; }
+    .chip { font-size: 0.84rem; }
+    #gestogramaContainer { width: 340px; height: 340px; }
+}
+
+@media (max-width: 600px) {
+    h1 { font-size: 1.6rem; padding: 0.8rem 1rem; }
+    .buttons-row { flex-direction: column; gap: 0.5rem; }
+    button { width: 100%; margin-right: 0; }
+    input[type="date"] { font-size: 0.9rem; }
+    .chip { font-size: 0.8rem; }
+    #gestogramaContainer { width: 280px; height: 280px; }
+}

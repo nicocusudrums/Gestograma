@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Gestograma. Dr Monteros Alvi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+
+<body>
+    <h1>Gestograma. Dr Monteros Alvi</h1>
+
+    <main>
+        <!-- FUM y FPP -->
+        <div class="card">
+            <label for="fum">FUM (FUR)</label>
+            <input type="date" id="fum" name="fum" />
+
+            <div class="dato">
+                <strong>FPP estimada:</strong> <span id="fppTexto">-</span>
+            </div>
+            <div class="small-note">
+                Se asume embarazo de 280 días (40 semanas) desde FUM.
+            </div>
+        </div>
+
+        <!-- Fecha de consulta y EG -->
+        <div class="card">
+            <label for="fechaConsulta">Fecha a evaluar</label>
+            <input type="date" id="fechaConsulta" name="fechaConsulta" />
+
+            <div class="buttons-row">
+                <button id="btnHoy" type="button">Hoy</button>
+                <button id="btnFpp" class="secondary" type="button">Ir a FPP</button>
+            </div>
+
+            <div class="dato">
+                <strong>Edad gestacional:</strong>
+                <span class="chip" id="egChip">-</span>
+            </div>
+
+            <div class="small-note">
+                La edad gestacional se calcula entre la FUM y la fecha seleccionada.
+            </div>
+        </div>
+
+        <!-- Gestograma Ruleta Animada -->
+        <div class="card">
+            <h2>Gestograma Ruleta</h2>
+            <div id="gestogramaContainer">
+                <svg id="gestograma" width="300" height="300" viewBox="0 0 300 300"></svg>
+                <div class="pointer">▲</div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
