@@ -58,7 +58,7 @@ function actualizarFpp() {
 }
 
 /* ========================
-   FUNCION PARA CALCULAR TRIMESTRE
+   CALCULAR TRIMESTRE
    ======================== */
 function trimestrePorSemana(semana) {
     if (semana <= 13) return "1º trimestre";
@@ -67,16 +67,17 @@ function trimestrePorSemana(semana) {
 }
 
 /* ========================
-   DIBUJAR GESTOGRAMA CON TOOLTIP Y ROTACIÓN
+   DIBUJAR GESTOGRAMA (rueda simple)
    ======================== */
 function dibujarGestograma(semanaActual = 0) {
+    const container = document.getElementById("gestogramaContainer");
     const svg = document.getElementById("gestograma");
     svg.innerHTML = "";
 
     const totalSemanas = 40;
-    const svgSize = svg.clientWidth;
-    const center = svgSize / 2;
-    const radius = center - 30;
+    const containerSize = Math.min(container.clientWidth, container.clientHeight);
+    const center = containerSize / 2;
+    const radius = center - 40;
     const angle = 360 / totalSemanas;
 
     // Tooltip
@@ -113,14 +114,13 @@ function dibujarGestograma(semanaActual = 0) {
         path.setAttribute("stroke", "#fff");
         path.setAttribute("stroke-width", "1");
 
-        // Colores
         if (i < semanaActual) path.setAttribute("fill", i % 2 === 0 ? "#64b5f6" : "#f48fb1");
         else if (i === semanaActual) path.setAttribute("fill", i % 2 === 0 ? "#2196f3" : "#ec407a");
         else path.setAttribute("fill", i % 2 === 0 ? "#bbdefb" : "#f8bbd0");
 
         svg.appendChild(path);
 
-        // Numeración de semanas
+        // Números de semana
         const numSemana = document.createElementNS("http://www.w3.org/2000/svg", "text");
         const textAngle = (startAngle + endAngle) / 2;
         const textRadius = radius - 15;
@@ -129,7 +129,7 @@ function dibujarGestograma(semanaActual = 0) {
 
         numSemana.setAttribute("x", textX);
         numSemana.setAttribute("y", textY);
-        numSemana.setAttribute("font-size", "10px");
+        numSemana.setAttribute("font-size", Math.max(8, containerSize / 50));
         numSemana.setAttribute("text-anchor", "middle");
         numSemana.setAttribute("dominant-baseline", "middle");
         numSemana.setAttribute("fill", "#333");
@@ -148,9 +148,10 @@ function dibujarGestograma(semanaActual = 0) {
         path.addEventListener("mouseleave", () => tooltip.style.opacity = 0);
     }
 
-    // Rotar SVG para centrar la semana actual arriba
-    const rotateAngle = -((semanaActual - 1) * angle);
-    svg.style.transform = `rotate(${rotateAngle}deg)`;
+    // Rotación simple
+    const targetAngle = -((semanaActual - 1) * angle);
+    svg.style.transition = "transform 0.5s ease-out";
+    svg.style.transform = `rotate(${targetAngle}deg)`;
 }
 
 /* ========================
@@ -214,5 +215,6 @@ document.addEventListener("DOMContentLoaded", () => {
         actualizarUI();
     });
 
+    window.addEventListener("resize", actualizarGestograma); // redibujar en resize
     actualizarUI();
 });

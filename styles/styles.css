@@ -12,10 +12,10 @@
     --text: #333;
     --text-muted: #555;
 
-    --primary: #42a5f5;       /* celeste */
+    --primary: #42a5f5;
     --primary-hover: #1e88e5;
 
-    --secondary: #f48fb1;     /* rosa */
+    --secondary: #f48fb1;
     --secondary-hover: #f06292;
 
     --chip-bg: #e1f5fe;
@@ -39,7 +39,7 @@ body {
 }
 
 /* ========================
-   HEADER PRINCIPAL
+   HEADER
    ======================== */
 header h1 {
     font-size: 2.2rem;
@@ -67,21 +67,6 @@ header h1 {
 .card:hover {
     box-shadow: 0 10px 25px rgba(0,0,0,0.25);
     transform: translateY(-2px);
-}
-
-/* ========================
-   SECCIONES CON ICONOS
-   ======================== */
-.section-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1rem;
-}
-
-.section-header h2 {
-    font-size: 1.4rem;
-    color: #1976d2;
-    margin: 0;
 }
 
 /* ========================
@@ -114,22 +99,11 @@ input[type="date"]:focus {
 }
 
 /* ========================
-   TEXTO Y CHIPS
+   CHIPS Y TEXTO
    ======================== */
-.small-note {
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    margin-top: 0.25rem;
-}
-
-.dato {
-    font-size: 0.95rem;
-    margin-top: 0.25rem;
-}
-
-.dato strong {
-    font-weight: 600;
-}
+.small-note { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem; }
+.dato { font-size: 0.95rem; margin-top: 0.25rem; }
+.dato strong { font-weight: 600; }
 
 .chip {
     display: inline-block;
@@ -164,18 +138,10 @@ button:hover {
     box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
-button:active {
-    transform: translateY(0);
-}
+button:active { transform: translateY(0); }
 
-button.secondary {
-    background: var(--secondary);
-    color: #fff;
-}
-
-button.secondary:hover {
-    background: var(--secondary-hover);
-}
+button.secondary { background: var(--secondary); }
+button.secondary:hover { background: var(--secondary-hover); }
 
 /* ========================
    BOTONES FILA
@@ -187,19 +153,20 @@ button.secondary:hover {
 }
 
 /* ========================
-   GESTOGRAMA RUEDA ANIMADA (CENTRADO)
+   GESTOGRAMA RUEDA
    ======================== */
 #gestogramaContainer {
     position: relative;
-    width: 420px;
-    height: 420px;
+    width: 100%;
+    max-width: 420px;
+    aspect-ratio: 1 / 1; /* siempre cuadrado */
     margin: 2rem auto;
     border-radius: 50%;
     background: radial-gradient(circle, #fefefe 0%, #e1f5fe 85%);
     box-shadow: 0 10px 25px rgba(0,0,0,0.25);
     display: flex;
-    justify-content: center; /* centra el SVG horizontalmente */
-    align-items: center;     /* centra el SVG verticalmente */
+    justify-content: center;
+    align-items: center;
     overflow: hidden;
 }
 
@@ -220,7 +187,7 @@ button.secondary:hover {
 /* Puntero */
 .pointer {
     position: absolute;
-    top: -16px;
+    top: 0;
     left: 50%;
     transform: translateX(-50%);
     font-size: 2.2rem;
@@ -237,7 +204,6 @@ button.secondary:hover {
     .card { padding: 1rem; }
     input[type="date"] { font-size: 0.92rem; }
     button { font-size: 0.85rem; padding: 0.5rem 1rem; }
-    #gestogramaContainer { width: 360px; height: 360px; }
 }
 
 @media (max-width: 600px) {
@@ -245,13 +211,87 @@ button.secondary:hover {
     .buttons-row { flex-direction: column; gap: 0.5rem; }
     button { width: 100%; margin-right: 0; }
     input[type="date"] { font-size: 0.9rem; }
-    #gestogramaContainer { width: 300px; height: 300px; }
 }
-
 
 /* ========================
    ANIMACIÓN RUEDA
    ======================== */
 #gestograma {
-    transition: transform 4s cubic-bezier(0.33, 1, 0.68, 1);
+    transition: transform 3s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+
+
+
+/* ========================
+   GESTOGRAMA RUEDA (ajustar solo el contenido de la ruleta interna)
+   ======================== */
+#gestogramaContainer {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    aspect-ratio: 1 / 1;
+    margin: 2rem auto;
+    border-radius: 50%;
+    background: radial-gradient(circle, #fefefe 0%, #e1f5fe 85%);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+#gestograma {
+    width: 100%;
+    height: 100%;
+    transform: rotate(0deg);
+    transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+#gestograma path {
+    stroke: #fff;
+    stroke-width: 1;
+    cursor: pointer;
+    transition: fill 0.5s, filter 0.5s;
+}
+
+/* ========================
+   RESPONSIVE - Hacer la ruleta interna más grande solo en móvil
+   ======================== */
+@media (max-width: 600px) {
+    header h1 { font-size: 1.6rem; padding: 0.8rem 1rem; }
+    .buttons-row { flex-direction: column; gap: 0.5rem; }
+    button { width: 100%; margin-right: 0; }
+    input[type="date"] { font-size: 0.9rem; }
+
+    /* Aumentar solo la ruleta interna (SVG de las semanas) */
+    #gestograma {
+        transform: scale(1.25);  /* Aumentar el tamaño de la ruleta interna */
+    }
+
+    /* Aumentar el tamaño de los números en la ruleta */
+    #gestograma text {
+        font-size: 12px !important; /* Aumentar el tamaño de los números de las semanas */
+    }
+}
+
+
+/* === (tu CSS original tal como lo enviaste) === */
+/* … NO lo repito aquí por espacio … */
+/* PÉGALO TAL CUAL Y LUEGO AGREGA ESTO AL FINAL */
+
+/* ========================
+   MODO CLÍNIC BCN
+   ======================== */
+#clinicBCN select {
+    width: 100%;
+    padding: 0.6rem;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    background: #fafafa;
+    margin-bottom: 0.75rem;
+}
+
+#clinicBCN input[type="number"] {
+    margin-bottom: 0.75rem;
 }
