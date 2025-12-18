@@ -1,297 +1,108 @@
-/* ========================
-   IMPORTAR FUENTE
-   ======================== */
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap');
 
-/* ========================
-   VARIABLES
-   ======================== */
 :root {
-    --bg: #e0f2f7;
-    --card-bg: #ffffff;
-    --text: #333;
-    --text-muted: #555;
-
     --primary: #42a5f5;
-    --primary-hover: #1e88e5;
-
     --secondary: #f48fb1;
-    --secondary-hover: #f06292;
-
-    --chip-bg: #e1f5fe;
-    --chip-text: #0277bd;
-
-    --radius: 14px;
-    --shadow: 0 4px 18px rgba(0,0,0,0.2);
-
-    --space: 1rem;
+    --bg: #e0f2f7;
+    --card: #ffffff;
+    --text: #333;
+    --muted: #555;
 }
 
-/* ========================
-   ESTILOS GENERALES
-   ======================== */
 body {
     font-family: 'Roboto Slab', serif;
-    margin: 0;
-    padding: var(--space);
     background: linear-gradient(160deg, #f5faff, #e0f2f7);
+    margin: 0;
+    padding: 1rem;
     color: var(--text);
 }
 
-/* ========================
-   HEADER
-   ======================== */
 header h1 {
-    font-size: 2.2rem;
     text-align: center;
-    margin-bottom: 2rem;
-    color: #fff;
-    background: linear-gradient(135deg, #42a5f5, #f48fb1);
-    padding: 1rem 2rem;
-    border-radius: 18px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    padding: 1rem;
+    border-radius: 16px;
 }
 
-/* ========================
-   CARD
-   ======================== */
+.subtitle {
+    font-weight: 400;
+}
+
 .card {
-    background: var(--card-bg);
-    border-radius: var(--radius);
-    padding: var(--space);
-    margin-bottom: var(--space);
-    box-shadow: var(--shadow);
-    transition: box-shadow 0.3s, transform 0.2s;
+    background: var(--card);
+    border-radius: 14px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 18px rgba(0,0,0,.2);
 }
 
-.card:hover {
-    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-    transform: translateY(-2px);
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    margin-bottom: .5rem;
 }
 
-/* ========================
-   INPUTS
-   ======================== */
 label {
     display: block;
-    margin-bottom: 0.25rem;
-    font-size: 0.95rem;
-    font-weight: 500;
+    margin-top: .5rem;
+    font-weight: 600;
 }
 
-input[type="date"] {
+input {
     width: 100%;
-    padding: 0.65rem;
-    margin-bottom: 0.75rem;
+    padding: .6rem;
     border-radius: 10px;
     border: 1px solid #ccc;
-    font-size: 0.95rem;
-    box-sizing: border-box;
-    background: #fafafa;
-    transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+    margin-bottom: .5rem;
 }
 
-input[type="date"]:focus {
-    outline: none;
-    border-color: #64b5f6;
-    background: #fff;
-    box-shadow: 0 0 10px rgba(66, 165, 245, 0.4);
+.buttons-row {
+    display: flex;
+    gap: .5rem;
+    margin: .5rem 0;
 }
 
-/* ========================
-   CHIPS Y TEXTO
-   ======================== */
-.small-note { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem; }
-.dato { font-size: 0.95rem; margin-top: 0.25rem; }
-.dato strong { font-weight: 600; }
-
-.chip {
-    display: inline-block;
-    margin-top: 0.35rem;
-    padding: 0.35rem 0.85rem;
-    border-radius: 999px;
-    font-size: 0.88rem;
-    background: var(--chip-bg);
-    color: var(--chip-text);
-    font-weight: 600;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.15);
-}
-
-/* ========================
-   BOTONES
-   ======================== */
 button {
-    padding: 0.55rem 1.1rem;
+    flex: 1;
+    padding: .5rem;
     border-radius: 999px;
     border: none;
-    font-size: 0.88rem;
     font-weight: 600;
     cursor: pointer;
     background: var(--primary);
-    color: #fff;
-    transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+    color: white;
 }
 
-button:hover {
-    background: var(--primary-hover);
-    transform: translateY(-1px);
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+button.secondary {
+    background: var(--secondary);
 }
 
-button:active { transform: translateY(0); }
-
-button.secondary { background: var(--secondary); }
-button.secondary:hover { background: var(--secondary-hover); }
-
-/* ========================
-   BOTONES FILA
-   ======================== */
-.buttons-row {
-    display: flex;
-    gap: 0.5rem;
-    margin-top: 0.5rem;
+.chip {
+    display: inline-block;
+    margin-top: .3rem;
+    padding: .3rem .8rem;
+    border-radius: 999px;
+    background: #e1f5fe;
+    color: #0277bd;
+    font-weight: 600;
 }
 
-/* ========================
-   GESTOGRAMA RUEDA
-   ======================== */
-#gestogramaContainer {
-    position: relative;
-    width: 100%;
-    max-width: 420px;
-    aspect-ratio: 1 / 1; /* siempre cuadrado */
-    margin: 2rem auto;
-    border-radius: 50%;
-    background: radial-gradient(circle, #fefefe 0%, #e1f5fe 85%);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
+.small-note {
+    font-size: .8rem;
+    color: var(--muted);
 }
 
-#gestograma {
-    width: 100%;
-    height: 100%;
-    transform: rotate(0deg);
-    transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-#gestograma path {
-    stroke: #fff;
-    stroke-width: 1;
-    cursor: pointer;
-    transition: fill 0.5s, filter 0.5s;
-}
-
-/* Puntero */
-.pointer {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 2.2rem;
-    color: #e91e63;
-    text-shadow: 0 0 12px #fff;
-    z-index: 10;
-}
-
-/* ========================
-   RESPONSIVE
-   ======================== */
-@media (max-width: 900px) {
-    header h1 { font-size: 1.9rem; padding: 1rem 1.5rem; }
-    .card { padding: 1rem; }
-    input[type="date"] { font-size: 0.92rem; }
-    button { font-size: 0.85rem; padding: 0.5rem 1rem; }
+footer {
+    text-align: center;
+    font-size: .8rem;
+    color: #555;
+    margin-top: 2rem;
 }
 
 @media (max-width: 600px) {
-    header h1 { font-size: 1.6rem; padding: 0.8rem 1rem; }
-    .buttons-row { flex-direction: column; gap: 0.5rem; }
-    button { width: 100%; margin-right: 0; }
-    input[type="date"] { font-size: 0.9rem; }
-}
-
-/* ========================
-   ANIMACIÓN RUEDA
-   ======================== */
-#gestograma {
-    transition: transform 3s cubic-bezier(0.33, 1, 0.68, 1);
-}
-
-
-
-
-/* ========================
-   GESTOGRAMA RUEDA (ajustar solo el contenido de la ruleta interna)
-   ======================== */
-#gestogramaContainer {
-    position: relative;
-    width: 100%;
-    max-width: 420px;
-    aspect-ratio: 1 / 1;
-    margin: 2rem auto;
-    border-radius: 50%;
-    background: radial-gradient(circle, #fefefe 0%, #e1f5fe 85%);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-}
-
-#gestograma {
-    width: 100%;
-    height: 100%;
-    transform: rotate(0deg);
-    transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-#gestograma path {
-    stroke: #fff;
-    stroke-width: 1;
-    cursor: pointer;
-    transition: fill 0.5s, filter 0.5s;
-}
-
-/* ========================
-   RESPONSIVE - Hacer la ruleta interna más grande solo en móvil
-   ======================== */
-@media (max-width: 600px) {
-    header h1 { font-size: 1.6rem; padding: 0.8rem 1rem; }
-    .buttons-row { flex-direction: column; gap: 0.5rem; }
-    button { width: 100%; margin-right: 0; }
-    input[type="date"] { font-size: 0.9rem; }
-
-    /* Aumentar solo la ruleta interna (SVG de las semanas) */
-    #gestograma {
-        transform: scale(1.25);  /* Aumentar el tamaño de la ruleta interna */
+    .buttons-row {
+        flex-direction: column;
     }
-
-    /* Aumentar el tamaño de los números en la ruleta */
-    #gestograma text {
-        font-size: 12px !important; /* Aumentar el tamaño de los números de las semanas */
-    }
-}
-
-
-/* === (tu CSS original tal como lo enviaste) === */
-/* … NO lo repito aquí por espacio … */
-/* PÉGALO TAL CUAL Y LUEGO AGREGA ESTO AL FINAL */
-
-/* ========================
-   MODO CLÍNIC BCN
-   ======================== */
-#clinicBCN select {
-    width: 100%;
-    padding: 0.6rem;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    background: #fafafa;
-    margin-bottom: 0.75rem;
-}
-
-#clinicBCN input[type="number"] {
-    margin-bottom: 0.75rem;
 }

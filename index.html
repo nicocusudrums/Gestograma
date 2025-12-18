@@ -1,37 +1,30 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8" />
     <title>Gestograma | Dr Monteros Alvi</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- CSS -->
     <link rel="stylesheet" href="styles/styles.css">
-
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
 
 <header>
-    <h1>Gestograma <span style="font-weight:400;">| Dr Monteros Alvi</span></h1>
+    <h1>Gestograma <span class="subtitle">| Dr Monteros Alvi</span></h1>
 </header>
 
 <main>
 
-    <!-- ===========================
-         GESTOGRAMA CLÁSICO
-         =========================== -->
-
+    <!-- FUM y FPP -->
     <section class="card">
         <div class="section-header">
-            <i class="fa-solid fa-calendar-check" style="color:#42a5f5;"></i>
+            <i class="fa-solid fa-calendar-check"></i>
             <h2>FUM y FPP</h2>
         </div>
 
-        <label for="fum">FUM (FUR)</label>
+        <label for="fum">FUM (Fecha de última menstruación)</label>
         <input type="date" id="fum">
 
         <div class="dato">
@@ -39,15 +32,16 @@
             <span id="fppTexto">-</span>
         </div>
 
-        <div class="small-note">
-            Se asume embarazo de 280 días (40 semanas) desde FUM.
-        </div>
+        <small class="small-note">
+            Embarazo calculado en 280 días (40 semanas).
+        </small>
     </section>
 
+    <!-- EG -->
     <section class="card">
         <div class="section-header">
-            <i class="fa-solid fa-clock" style="color:#f48fb1;"></i>
-            <h2>Fecha de consulta y Edad Gestacional</h2>
+            <i class="fa-solid fa-clock"></i>
+            <h2>Edad Gestacional</h2>
         </div>
 
         <label for="fechaConsulta">Fecha a evaluar</label>
@@ -64,68 +58,9 @@
         </div>
     </section>
 
-    <section class="card">
-        <div class="section-header">
-            <i class="fa-solid fa-circle-notch" style="color:#64b5f6;"></i>
-            <h2>Gestograma Ruleta</h2>
-        </div>
-
-        <div id="gestogramaContainer">
-            <svg id="gestograma" viewBox="0 0 400 400"></svg>
-            <div class="pointer">▲</div>
-        </div>
-    </section>
-
-    <!-- ===========================
-         MODO CLÍNIC BARCELONA
-         =========================== -->
-
-    <section class="card" id="clinicBCN">
-        <div class="section-header">
-            <i class="fa-solid fa-hospital" style="color:#1976d2;"></i>
-            <h2>Datación gestacional – Modo Clínic BCN</h2>
-        </div>
-
-        <label for="metodoBCN">Método de datación</label>
-        <select id="metodoBCN">
-            <option value="fum">FUM (clásico)</option>
-            <option value="crl">Eco 1º trimestre (CRL)</option>
-            <option value="bpd">Eco 2º trimestre (BPD)</option>
-        </select>
-
-        <div id="bloqueFUM_BCN">
-            <label for="fumBCN">FUM</label>
-            <input type="date" id="fumBCN">
-        </div>
-
-        <div id="bloqueCRL_BCN" style="display:none;">
-            <label>Ecografía 1º trimestre</label>
-            <input type="date" id="ecoFechaCRL">
-            <input type="number" id="crlBCN" placeholder="CRL (mm)" step="0.1">
-        </div>
-
-        <div id="bloqueBPD_BCN" style="display:none;">
-            <label>Ecografía 2º trimestre</label>
-            <input type="date" id="ecoFechaBPD">
-            <input type="number" id="bpdBCN" placeholder="BPD (mm)" step="0.1">
-        </div>
-
-        <label for="fechaEvalBCN">Fecha a evaluar</label>
-        <input type="date" id="fechaEvalBCN">
-
-        <div class="buttons-row">
-            <button id="btnHoyBCN">Hoy</button>
-            <button id="btnFppBCN" class="secondary">Ir a FPP</button>
-        </div>
-
-        <div class="dato"><strong>FUM estimada:</strong> <span id="fumOutBCN">-</span></div>
-        <div class="dato"><strong>FPP estimada:</strong> <span id="fppOutBCN">-</span></div>
-        <div class="dato"><strong>EG:</strong> <span class="chip" id="egOutBCN">-</span></div>
-    </section>
-
 </main>
 
-<footer style="text-align:center;margin-top:2rem;font-size:.85rem;color:#555;">
+<footer>
     &copy; 2025 Dr Monteros Alvi
 </footer>
 
